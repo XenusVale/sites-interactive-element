@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" , initial-scale="1.0" />
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+
+        * {
+            font-family: "Poppins";
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100vw;
+            max-width: 100%;
+            height: 30vh;
+            min-height: 30vh;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container#blur.active {
+            filter: blur(10px);
+        }
+
+        .container .content {
+            max-width: 100%;
+        }
+
+        .spacingDiv {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            column-gap: 20px;
+        }
+
+        @keyframes rumble {
+            0% {
+                transform: translate(1px, 1px) rotate(0deg);
+            }
+
+            20% {
+                transform: translate(-1px, -2px) rotate(-1deg);
+            }
+
+            40% {
+                transform: translate(-3px, 0px) rotate(1deg);
+            }
+
+            60% {
+                transform: translate(0px, 2px) rotate(0deg);
+            }
+
+            80% {
+                transform: translate(-1px, -1px) rotate(1deg);
+            }
+
+            100% {
+                transform: translate(1px, -2px) rotate(0deg);
+            }
+        }
+
+        a.appHighlight {
+            position: relative;
+            display: inline-block;
+            color: #000000;
+            background-color: #ffffff;
+            border-radius: 20px;
+            border-style: solid;
+            border-color: black;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        a.appHighlight:hover {
+            border-color: #226DB4;
+            animation: rumble 0.5s;
+            animation-iteration-count: infinite;
+            cursor: pointer;
+        }
+
+        a.closeButton {
+            position: relative;
+            display: inline-block;
+            color: #ffffff;
+            background-color: #be1e2e;
+            border-radius: 20px;
+            padding: 5px 20px;
+            margin-bottom: -5px;
+            border-style: solid;
+            border-color: black;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        a.closeButton:hover {
+            border-color: #226DB4;
+            cursor: pointer;
+        }
+
+        #popup {
+            position: fixed;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 35vw;
+            background-color: #fff2e6;
+            border-style: solid;
+            border-color: black;
+            border-radius: 10px;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.5s;
+            padding: 1vh 10px 2vh 10px;
+            text-align: center;
+            z-index: 5000;
+        }
+
+        #popup.active {
+            top: 50%;
+            visibility: visible;
+            opacity: 1;
+            transition: 0.5s;
+        }
+    </style>
+    <title>Apps Interactive</title>
+</head>
+
+<body>
+    <div class="container" id="blur">
+        <div class="content">
+            <div class="spacingDiv">
+                <a class="appHighlight" onclick="setTextThenToggle(0)">
+                    <img src="" alt="CRM Icon"
+                        style="width: 6vw; height: 6vh; margin: 10px 10px 10px 10px;" draggable="false" />
+                    <p>CRM</p>
+                </a>
+                <a class="appHighlight" onclick="setTextThenToggle(1)">
+                    <img src="" alt="Creator Icon"
+                        style="width: 6vw; height: 6vh; margin: 10px 10px 10px 10px;" draggable="false" />
+                    <p>Creator</p>
+                </a>
+                <a class="appHighlight" onclick="setTextThenToggle(2)">
+                    <img src=""
+                        alt="Campaigns Icon" style="width: 6vw; height: 6vh; margin: 10px 10px 10px 10px;"
+                        draggable="false" />
+                    <p>Campaigns</p>
+                </a>
+                <a class="appHighlight" onclick="setTextThenToggle(3)">
+                    <img src="" alt="Desk Icon"
+                        style="width: 6vw; height: 6vh; margin: 10px 10px 10px 10px;" draggable="false" />
+                    <p>Desk</p>
+                </a>
+            </div>
+            <div class="spacingDiv"></div>
+            <div class="spacingDiv">
+                <a class="appHighlight" onclick="setTextThenToggle(4)">
+                    <img src="" alt="Mail Icon"
+                        style="width: 6vw; height: 6vh; margin: 10px 10px 10px 10px;" draggable="false" />
+                    <p>Mail</p>
+                </a>
+                <a class="appHighlight" onclick="setTextThenToggle(5)">
+                    <img src=""
+                        alt="Projects Icostyle=" style="width: 6vw; height: 6vh; margin: 10px 10px 10px 10px;"
+                        draggable="false" />
+                    <p>Projects</p>
+                </a>
+                <a class="appHighlight" onclick="setTextThenToggle(6)">
+                    <img src="" alt="Books Icon"
+                        style="width: 6vw; height: 6vh; margin: 10px 10px 10px 10px;" draggable="false" />
+                    <p>Books</p>
+                </a>
+                <a class="appHighlight" onclick="setTextThenToggle(7)">
+                    <img src="" alt="People Icon"
+                        style="width: 6vw; height: 6vh; margin: 10px 10px 10px 10px;" draggable="false" />
+                    <p>People</p>
+                </a>
+            </div>
+            <div class="spacingDiv"></div>
+            <div class="spacingDiv">
+                <a class="appHighlight" onclick="setTextThenToggle(8)">
+                    <img src="" alt="Recruit Icon"
+                        style="width: 6vw; height: 6vh; margin: 10px 10px 10px 10px;" draggable="false" />
+                    <p>Recruit</p>
+                </a>
+                <a class="appHighlight" onclick="setTextThenToggle(9)">
+                    <img src=""
+                        alt="Analytics Icon" style="width: 6vw; height: 6vh; margin: 10px 10px 10px 10px;"
+                        draggable="false" />
+                    <p>Analytics</p>
+                </a>
+                <a class="appHighlight" onclick="setTextThenToggle(10)">
+                    <img src="" alt="Bookings Icon"
+                        style="width: 6vw; height: 6vh; margin: 10px 10px 10px 10px;" draggable="false" />
+                    <p>Bookings</p>
+                </a>
+                <a class="appHighlight" onclick="setTextThenToggle(11)">
+                    <img src="" alt="Sites Iconstyle="
+                        style="width: 6vw; height: 6vh; margin: 10px 10px 10px 10px;" draggable="false" />
+                    <p>Sites</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="popup">
+        <p id="popupText"></p>
+        <div class="spacingDiv"></div>
+        <a class="closeButton" onclick="toggle()">Close</a>
+    </div>
+    <script type="text/javascript">
+
+        var popupTextArray = [
+            "Description1",
+            "Description2",
+            "Description3",
+            "Description4",
+            "Description5",
+            "Description6",
+            "Description7",
+            "Description8",
+            "Description9",
+            "Description10",
+            "Description11",
+            "Description12"
+        ];
+
+        function setTextThenToggle(x) {
+            var popupText = document.getElementById("popupText");
+            popupText.innerHTML = popupTextArray[x];
+
+            toggle(x);
+        }
+
+        function toggle() {
+            var blur = document.getElementById("blur");
+            blur.classList.toggle("active");
+            var popup = document.getElementById("popup");
+            popup.classList.toggle("active");
+        }
+
+    </script>
+</body>
+
+</html>
